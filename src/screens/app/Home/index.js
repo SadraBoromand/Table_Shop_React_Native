@@ -60,14 +60,6 @@ const Home = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <Header onSearch={setKeyword} keyword={keyword} showSearch title='Find All You Need' />
 
-            <Text style={{
-                textAlign: 'center',
-                color: "#000",
-                fontFamily:'Product Sans'
-            }}>
-                Mohammad Sadra Boroumand - Test Text
-            </Text>
-
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}

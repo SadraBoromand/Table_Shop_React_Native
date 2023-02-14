@@ -1,6 +1,7 @@
 import React from 'react'
-import { Image, Pressable, SafeAreaView, ScrollView, Text, View } from 'react-native'
+import { Image, Pressable, SafeAreaView, ScrollView, Text, View, Linking } from 'react-native'
 import Button from '../../../components/Button';
+import ImageCarousel from '../../../components/ImageCarousel';
 import styles from './styles'
 
 const ProductDetails = ({ navigation, route }) => {
@@ -10,10 +11,24 @@ const ProductDetails = ({ navigation, route }) => {
         navigation.goBack();
     }
 
+    const onContact = () => {
+        // make a phone call
+        const phone = 12323;
+        Linking.openURL(`tel:${phone}`);
+
+        // send an Email
+        const email = 'support@mail.com';
+        Linking.openURL(`mailto:${email}`);
+    }
+
     return (
         <SafeAreaView style={styles.safe}>
             <ScrollView style={styles.container}>
-                <Image style={styles.image} source={{ uri: product?.image }} />
+                {product?.images?.length ? (
+                    <ImageCarousel images={product?.images} />
+                ) : (
+                    <Image style={styles.image} source={{ uri: product?.image }} />
+                )}
                 <View style={styles.content}>
                     <Text style={styles.title}>{product?.title}</Text>
                     <Text style={styles.price}>{product?.price}</Text>
@@ -29,7 +44,7 @@ const ProductDetails = ({ navigation, route }) => {
                 <Pressable style={styles.bookmarkContainer}>
                     <Image style={styles.bookmarkIcon} source={require('../../../assets/bookmark_blue.png')} />
                 </Pressable>
-                <Button title='Contact Seller' />
+                <Button onPress={onContact} title='Contact Seller' />
             </View>
         </SafeAreaView>
     )
