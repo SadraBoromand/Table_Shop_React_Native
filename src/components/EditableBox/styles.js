@@ -3,10 +3,8 @@ import { colors } from '../../utils/colors'
 
 export default styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 16,
+        paddingHorizontal: 16,
+        paddingVertical: 12,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -21,18 +19,14 @@ export default styles = StyleSheet.create({
         marginHorizontal: 5,
         borderRadius: 4,
     },
-    title: {
-        color: colors.blue,
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    subtitle: {
-        marginTop: 6,
+    label: {
+        marginBottom: 6,
         color: colors.grey,
         fontSize: 12,
     },
-    arrow: {
-        width: 32,
-        height: 32,
+    input: {
+        color: colors.blue,
+        fontSize: 14,
+        fontWeight: '500'
     }
 })

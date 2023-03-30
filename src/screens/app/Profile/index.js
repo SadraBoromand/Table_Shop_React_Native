@@ -1,15 +1,27 @@
 import React from 'react'
-import { SafeAreaView, View, Text, ScrollView } from 'react-native';
+import { SafeAreaView, View, Text } from 'react-native';
 import Button from '../../../components/Button';
 import Header from '../../../components/Header';
 import ListItem from '../../../components/ListItem';
 import styles from './styles';
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
     const num = 10;
 
     const onLogout = () => {
         console.log('logout')
+    }
+
+    const onSettingPress = () => {
+        navigation.navigate("Settings");
+    }
+
+    const onNewListingPress = () => {
+        navigation.navigate("CreateListing");
+    }
+
+    const onMyListingsPress = () => {
+        navigation.navigate("MyListings");
     }
 
     return (
@@ -21,11 +33,11 @@ const Profile = () => {
                     <Text style={styles.name}>Hi Sadra</Text>
                     <Text style={styles.email}>sadrabroo@gmail.com</Text>
 
-                    <ListItem title="My Listing" subtitle={`You have ${num} listing`} />
-                    <ListItem title="Setting" subtitle="Account, FAQ, Contact" />
+                    <ListItem onPress={onMyListingsPress} title="My Listing" subtitle={`You have ${num} listing`} />
+                    <ListItem onPress={onSettingPress} title="Setting" subtitle="Account, FAQ, Contact" />
                 </View>
 
-                <Button style={{ flex: 0 }} title="Add New Listing" />
+                <Button onPress={onNewListingPress} style={{ flex: 0 }} title="Add New Listing" />
             </View>
         </SafeAreaView>
     )

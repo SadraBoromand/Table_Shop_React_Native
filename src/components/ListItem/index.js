@@ -1,16 +1,18 @@
-import React, { memo } from 'react';
-import { View, Image, Text } from 'react-native';
+import React from 'react';
+import { View, Image, Text, Pressable } from 'react-native';
 import styles from './styles';
 
-const ListItem = ({ title, subtitle }) => {
+const ListItem = ({ title, subtitle, onPress, style }) => {
     return (
-        <View style={styles.container}>
+        <Pressable onPress={onPress} style={[styles.container, style]}>
             <View>
                 <Text style={styles.title}>{title}</Text>
-                <Text style={styles.subtitle}>{subtitle}</Text>
+                {!!subtitle ? (
+                    <Text style={styles.subtitle}>{subtitle}</Text>
+                ) : null}
             </View>
             <Image style={styles.arrow} source={require('../../assets/arrow.png')} />
-        </View>
+        </Pressable>
     )
 }
 
